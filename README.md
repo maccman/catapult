@@ -1,6 +1,8 @@
 # Catapult
 
-TODO: Write a gem description
+Simple gem that gives pure JavaScript/CoffeeScript projects a basic structure, and manages any necessary compilation and concatenation.
+
+Catapult is especially useful alongside MVC frameworks like [Spine](http://spinejs.com) and [Backbone](http://backbonejs.org).
 
 ## Installation
 
@@ -8,12 +10,14 @@ TODO: Write a gem description
 
 ## Usage
 
+To generate an app, use:
+
     catapult new myapp
     cd myapp
 
 Now you can start a catapult server:
 
-    catapult serve
+    catapult server
 
 Or build the files for deployment:
 
@@ -23,10 +27,42 @@ Or watch the files for changes, and then automatically build:
 
     catapult watch
 
-## Contributing
+## Concatenation
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Catapult uses [Sprockets](https://github.com/sstephenson/sprockets) for concatenation. Sprockets uses meta comments to specify dependencies. For example:
+
+    //= require jquery
+    //= require ./other_file
+    //= require_tree ./app
+
+See the Sprockets documentation for more information.
+
+## Included compilers
+
+Sprockets will automatically compile certain file types when the files are first requested. For example, files with `.coffee` extensions will be compiled down to JavaScript before being served up to the end user.
+
+The included Sprockets compilers are: [CoffeeScript](http://coffeescript.org), [sprockets-commonjs](http://github.com/maccman/sprockets-commonjs) and [Stylus](http://learnboost.github.com/stylus/). You can include additional ones by simply adding them to your project's `Gemfile`.
+
+## Deploying to Heroku
+
+It's a good idea to just serve up static files in production, and disable the asset compilation.
+
+If you're using a system like Apache, you can just serve up the static files under the `./public` dir. Otherwise, with a [Rack](http://rack.github.com) based system, like [Heroku](http://heroku.com), you're going to need a few files:
+
+Firstly, a `Gemfile`:
+
+    source 'https://rubygems.org'
+    gem 'catapult'
+
+Then a `config.ru` file, serving up the static files:
+
+    require 'catapult'
+
+    use Catapult::TryStatic,
+        :root => Catapult.root.join('public'),
+        :urls => %w[/],
+        :try  => ['.html', 'index.html', '/index.html']
+
+    run lambda {|env|
+      [404, {}, ['Not found']]
+    }
