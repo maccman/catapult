@@ -34,17 +34,10 @@ module Catapult
     method_option :port, :aliases => '-p', :desc => 'Port'
 
     def server
-      if File.exists?('config.ru')
-        Rack::Server.start(
-          :Port => options[:port] || 9292,
-          :config => 'config.ru'
-        )
-      else
-        Rack::Server.start(
-          :Port => options[:port] || 9292,
-          :app  => Catapult.app
-        )
-      end
+      Rack::Server.start(
+        :Port => options[:port] || 9292,
+        :app  => Catapult.app
+      )
     end
 
     desc 'watch', 'Build project whenever it changes'
