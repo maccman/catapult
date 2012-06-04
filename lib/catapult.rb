@@ -44,6 +44,8 @@ module Catapult
           :urls => %w[/],
           :try  => ['.html', 'index.html', '/index.html']
 
+      use Rack::ContentType
+
       run lambda {|env|
         [404, {}, ['Not found']]
       }

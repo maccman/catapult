@@ -29,15 +29,22 @@ module Catapult
       end
     end
 
-    desc 'serve', 'Serve up project'
+    desc 'server', 'Serve up project'
 
     method_option :port, :aliases => '-p', :desc => 'Port'
 
-    def serve
-      Rack::Server.start(
-        :Port => options[:port] || 9292,
-        :app  => Catapult.app
-      )
+    def server
+      if File.exists?('config.ru')
+        Rack::Server.start(
+          :Port => options[:port] || 9292,
+          :config => 'config.ru'
+        )
+      else
+        Rack::Server.start(
+          :Port => options[:port] || 9292,
+          :app  => Catapult.app
+        )
+      end
     end
 
     desc 'watch', 'Build project whenever it changes'

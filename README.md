@@ -4,21 +4,24 @@ TODO: Write a gem description
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'catapult'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install catapult
 
 ## Usage
 
-TODO: Write usage instructions here
+    catapult new myapp
+    cd myapp
+
+Now you can start a catapult server:
+
+    catapult serve
+
+Or build the files for deployment:
+
+    catapult build
+
+Or watch the files for changes, and then automatically build:
+
+    catapult watch
 
 ## Contributing
 
