@@ -17,13 +17,13 @@ module Catapult
     def build
       target = Pathname('./public/assets')
 
-      puts "Building: #{Catapult.root}"
+      say "Building: #{Catapult.root}"
 
       Catapult.environment.each_logical_path do |logical_path|
         if asset = Catapult.environment.find_asset(logical_path)
           filename = target.join(logical_path)
           FileUtils.mkpath(filename.dirname)
-          puts "Write asset: #{filename}"
+          say "Write asset: #{filename}"
           asset.write_to(filename)
         end
       end
@@ -50,7 +50,7 @@ module Catapult
     desc 'watch', 'Build project whenever it changes'
 
     def watch
-      puts "Watching: #{Catapult.root}"
+      say "Watching: #{Catapult.root}"
 
       build
 
