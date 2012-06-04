@@ -6,6 +6,11 @@ require 'thor'
 
 module Catapult
   class CLI < Thor
+    include Thor::Actions
+
+    def self.source_root
+      File.expand_path('../../..', __FILE__)
+    end
 
     desc 'build', 'Build project'
 
@@ -35,7 +40,7 @@ module Catapult
       )
     end
 
-    desc 'watch', 'build project whenever it changes'
+    desc 'watch', 'Build project whenever it changes'
 
     def watch
       puts "Watching: #{Catapult.root}"
@@ -46,6 +51,12 @@ module Catapult
       paths = paths.select {|p| File.exists?(p) }
 
       Listen.to(*paths) { build }
+    end
+
+    desc 'new', 'Create a new project'
+
+    def new(name)
+      directory('templates/app', name)
     end
   end
 end
