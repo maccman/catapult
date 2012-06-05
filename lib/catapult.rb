@@ -1,8 +1,7 @@
 require 'pathname'
 require 'sprockets'
 require 'sprockets/commonjs'
-require 'stylus/tilt'
-require 'stylus/import_processor'
+require 'stylus'
 require 'coffee_script'
 
 module Catapult
@@ -25,9 +24,7 @@ module Catapult
       env.append_path(root.join('vendor', 'assets', 'stylesheets'))
 
       env.append_path(root.join('browser_modules'))
-
-      env.register_engine '.styl', Tilt::StylusTemplate
-      env.register_preprocessor 'text/css', Stylus::ImportProcessor
+      Stylus.setup(env)
 
       env
     end
