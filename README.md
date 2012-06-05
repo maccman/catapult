@@ -12,20 +12,31 @@ Catapult is especially useful alongside MVC frameworks like [Spine](http://spine
 
 To generate an app, use:
 
-    catapult new myapp
-    cd myapp
+    $ catapult new myapp
+
+      create  myapp
+      create  myapp/assets/javascripts/app.js
+      create  myapp/assets/stylesheets/app.css
+      create  myapp/browser.json
+      create  myapp/public/index.htm
+
+    $ cd myapp
+
+You'll notice a bunch of files have been created. The convention in Catapult is that any assets under `assets/javascripts` and `assets/stylsheets` will be compiled under the static `public` directory. Your HTML files can reference them there.
 
 Now you can start a catapult server:
 
-    catapult server
+    $ catapult server
 
-Or build the files for deployment:
+And open up the app [in your browser](http://localhost:9292).
 
-    catapult build
+You can also build the files for deployment:
+
+    $ catapult build
 
 Or watch the files for changes, and then automatically build:
 
-    catapult watch
+    $ catapult watch
 
 ## Concatenation
 
