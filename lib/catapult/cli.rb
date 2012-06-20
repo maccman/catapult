@@ -12,14 +12,14 @@ module Catapult
       File.expand_path('../../..', __FILE__)
     end
 
-    desc 'build', 'Build project'
+    desc 'build [asset1 asset2..]', 'Build project'
 
-    def build
+    def build(*assets)
       target = Pathname('./public/assets')
 
       say "Building: #{Catapult.root}"
 
-      Catapult.environment.each_logical_path do |logical_path|
+      Catapult.environment.each_logical_path(assets) do |logical_path|
         if asset = Catapult.environment.find_asset(logical_path)
           filename = target.join(logical_path)
           FileUtils.mkpath(filename.dirname)
