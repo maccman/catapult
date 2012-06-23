@@ -40,12 +40,12 @@ module Catapult
       )
     end
 
-    desc 'watch', 'Build project whenever it changes'
+    desc 'watch [asset1 asset2..]', 'Build project whenever it changes'
 
-    def watch
+    def watch(*assets)
       say "Watching: #{Catapult.root}"
 
-      build
+      build(*assets)
 
       paths = Catapult.environment.paths
       paths = paths.select {|p| File.exists?(p) }
