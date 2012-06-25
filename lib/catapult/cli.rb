@@ -44,6 +44,8 @@ module Catapult
 
     desc 'watch [asset1 asset2..]', 'Build project whenever it changes'
 
+    method_option :target, :aliases => '-t', :desc => 'Directory to compile assets to'
+
     def watch(*assets)
       say "Watching: #{Catapult.root}"
 
