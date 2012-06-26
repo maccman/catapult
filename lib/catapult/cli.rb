@@ -14,8 +14,10 @@ module Catapult
 
     desc 'build [asset1 asset2..]', 'Build project'
 
+    method_option :target, :aliases => '-t', :desc => 'Directory to compile assets to'
+
     def build(*assets)
-      target = Pathname('./public/assets')
+      target = Pathname(options[:target] || './public/assets')
 
       say "Building: #{Catapult.root}"
 
@@ -41,6 +43,8 @@ module Catapult
     end
 
     desc 'watch [asset1 asset2..]', 'Build project whenever it changes'
+
+    method_option :target, :aliases => '-t', :desc => 'Directory to compile assets to'
 
     def watch(*assets)
       say "Watching: #{Catapult.root}"
