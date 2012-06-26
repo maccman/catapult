@@ -36,10 +36,7 @@ module Catapult
     method_option :port, :aliases => '-p', :desc => 'Port'
 
     def server
-      Rack::Server.start(
-        :Port => options[:port] || 9292,
-        :app  => Catapult.app
-      )
+      system "rackup -p #{options[:port] || 9292}"
     end
 
     desc 'watch [asset1 asset2..]', 'Build project whenever it changes'
