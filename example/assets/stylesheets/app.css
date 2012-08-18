@@ -1,1 +1,6 @@
 /*= require_tree .*/
+
+body {
+  color: #000;
+  background: #FFF;
+}

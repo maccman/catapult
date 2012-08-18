@@ -15,9 +15,15 @@ module Catapult
     desc 'build [asset1 asset2..]', 'Build project'
 
     method_option :target, :aliases => '-t', :desc => 'Directory to compile assets to'
+    method_option :compile, :type => :boolean, :aliases => '-c', :desc => 'Compile and minify assets'
 
     def build(*assets)
       target = Pathname(options[:target] || './public/assets')
+
+      if options[:compile]
+        Catapult.environment.js_compressor  = Compressor::JS.new
+        Catapult.environment.css_compressor = Compressor::CSS.new
+      end
 
       say "Building: #{Catapult.root}"
 

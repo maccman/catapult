@@ -6,6 +6,7 @@ require 'coffee_script'
 
 module Catapult
   autoload :CLI, 'catapult/cli'
+  autoload :Compressor, 'catapult/compressor'
   autoload :TryStatic, 'catapult/try_static'
 
   def self.root
