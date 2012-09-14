@@ -24,7 +24,7 @@ module Catapult
       env.append_path(root.join('vendor', 'assets', 'javascripts'))
       env.append_path(root.join('vendor', 'assets', 'stylesheets'))
 
-      env.append_path(root.join('browser_modules'))
+      env.append_path(root.join('components'))
       Stylus.setup(env)
 
       env
