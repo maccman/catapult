@@ -27,7 +27,7 @@ module Catapult
 
       say "Building: #{Catapult.root}"
 
-      warnings = Array.new
+      warnings = []
       Catapult.environment.each_logical_path(assets) do |logical_path|
         begin
           if asset = Catapult.environment.find_asset(logical_path)
