@@ -28,11 +28,15 @@ module Catapult
       say "Building: #{Catapult.root}"
 
       Catapult.environment.each_logical_path(assets) do |logical_path|
-        if asset = Catapult.environment.find_asset(logical_path)
-          filename = target.join(logical_path)
-          FileUtils.mkpath(filename.dirname)
-          say "Write asset: #{filename}"
-          asset.write_to(filename)
+        begin
+          if asset = Catapult.environment.find_asset(logical_path)
+            filename = target.join(logical_path)
+            FileUtils.mkpath(filename.dirname)
+            say "Write asset: #{filename}"
+            asset.write_to(filename)
+          end
+        rescue
+          say "Warning: Asset not found #{filename}"
         end
       end
     end
