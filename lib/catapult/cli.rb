@@ -36,7 +36,7 @@ module Catapult
             say "Write asset: #{filename}"
             asset.write_to(filename)
           end
-        rescue Exception => exception
+        rescue StandardError => exception
           say exception
           warnings << exception
         end
