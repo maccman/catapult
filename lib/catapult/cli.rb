@@ -30,15 +30,15 @@ module Catapult
       warnings = Array.new
       Catapult.environment.each_logical_path(assets) do |logical_path|
         begin
-        if asset = Catapult.environment.find_asset(logical_path)
-          filename = target.join(logical_path)
-          FileUtils.mkpath(filename.dirname)
-          say "Write asset: #{filename}"
-          asset.write_to(filename)
-        end
-        rescue
-          say "Warning: #{$!} with asset #{logical_path}"
-          warnings << $!
+          if asset = Catapult.environment.find_asset(logical_path)
+            filename = target.join(logical_path)
+            FileUtils.mkpath(filename.dirname)
+            say "Write asset: #{filename}"
+            asset.write_to(filename)
+          end
+        rescue Exception => exception
+          say exception
+          warnings << exception
         end
       end
 
