@@ -27,12 +27,25 @@ module Catapult
 
       say "Building: #{Catapult.root}"
 
+      warnings = []
       Catapult.environment.each_logical_path(assets) do |logical_path|
-        if asset = Catapult.environment.find_asset(logical_path)
-          filename = target.join(logical_path)
-          FileUtils.mkpath(filename.dirname)
-          say "Write asset: #{filename}"
-          asset.write_to(filename)
+        begin
+          if asset = Catapult.environment.find_asset(logical_path)
+            filename = target.join(logical_path)
+            FileUtils.mkpath(filename.dirname)
+            say "Write asset: #{filename}"
+            asset.write_to(filename)
+          end
+        rescue StandardError => exception
+          say exception
+          warnings << exception
+        end
+      end
+
+      unless warnings.empty?
+        say "Completed with #{warnings.length} warnings."
+        warnings.each do |warning|
+          say warning
         end
       end
     end
