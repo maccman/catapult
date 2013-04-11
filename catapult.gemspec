@@ -15,12 +15,12 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Catapult::VERSION
 
-  gem.add_dependency 'rack', '~> 1.4.1'
-  gem.add_dependency 'sprockets', '~> 2.4.3'
-  gem.add_dependency 'sprockets-commonjs', '= 0.0.6.pre'
-  gem.add_dependency 'listen', '~> 0.4.2'
-  gem.add_dependency 'stylus', '~> 0.6.2'
+  gem.add_dependency 'rack', '~> 1.5.2'
+  gem.add_dependency 'sprockets', '~> 2.9.2'
+  gem.add_dependency 'sprockets-commonjs', '~> 0.0.5'
+  gem.add_dependency 'listen', '~> 0.7.3'
+  gem.add_dependency 'stylus', '~> 0.7.1'
   gem.add_dependency 'coffee-script', '~> 2.2.0'
-  gem.add_dependency 'thor', '~> 0.15.2'
-  gem.add_dependency 'thin'
+  gem.add_dependency 'thor', '~> 0.18.1'
+  gem.add_dependency 'thin', '~> 1.5.1'
 end
