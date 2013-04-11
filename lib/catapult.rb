@@ -1,7 +1,7 @@
 require 'pathname'
 require 'sprockets'
 require 'sprockets/commonjs'
-require 'stylus'
+require 'stylus/sprockets'
 require 'coffee_script'
 
 module Catapult
