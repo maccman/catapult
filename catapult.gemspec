@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sprockets', '~> 2.9.2'
   gem.add_dependency 'sprockets-commonjs', '~> 0.0.5'
   gem.add_dependency 'listen', '~> 0.7.3'
+  gem.add_dependency 'rb-fsevent', '~> 0.9'
   gem.add_dependency 'stylus', '~> 0.7.1'
   gem.add_dependency 'coffee-script', '~> 2.2.0'
   gem.add_dependency 'thor', '~> 0.18.1'
