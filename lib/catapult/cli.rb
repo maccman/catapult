@@ -73,7 +73,7 @@ module Catapult
       paths = Catapult.environment.paths
       paths = paths.select {|p| File.exists?(p) }
 
-      Listen.to(*paths) { build }
+      Listen.to(*paths) { build(*assets) }
     end
 
     desc 'new', 'Create a new project'
