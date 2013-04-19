@@ -6,3 +6,5 @@ namespace :assets do
     Catapult::CLI.new.build
   end
 end
+
+task :default => 'assets:precompile'
