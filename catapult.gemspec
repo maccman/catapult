@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Catapult::VERSION
 
   gem.add_dependency 'rack', '~> 1.5.2'
+  gem.add_dependency 'rack-livereload', '~> 0.3.13'
   gem.add_dependency 'sprockets', '~> 2.9.2'
   gem.add_dependency 'sprockets-commonjs', '~> 0.0.5'
   gem.add_dependency 'listen', '~> 0.7.3'
