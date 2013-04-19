@@ -1,4 +1,4 @@
-# Catapult
+# Catapult [![Dependency Status](https://gemnasium.com/maccman/catapult.png)](https://gemnasium.com/maccman/catapult)
 
 Simple gem that gives pure JavaScript/CoffeeScript projects a basic structure, and manages any necessary compilation and concatenation.
 
