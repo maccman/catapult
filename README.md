@@ -15,6 +15,9 @@ To generate an app, use:
     $ catapult new myapp
 
       create  myapp
+      create  myapp/Gemfile
+      create  myapp/Guardfile
+      create  myapp/Rakefile
       create  myapp/assets/javascripts/app.js
       create  myapp/assets/stylesheets/app.css
       create  myapp/browser.json
