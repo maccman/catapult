@@ -3,6 +3,7 @@ require 'sprockets'
 require 'sprockets/commonjs'
 require 'stylus/sprockets'
 require 'coffee_script'
+require 'rack-livereload'
 
 module Catapult
   autoload :CLI, 'catapult/cli'
@@ -37,6 +38,7 @@ module Catapult
         run Catapult.environment
       end
 
+      use Rack::LiveReload
       use Catapult::TryStatic,
           :root => Catapult.root.join('public'),
           :urls => %w[/],

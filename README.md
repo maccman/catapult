@@ -1,4 +1,4 @@
-# Catapult
+# Catapult [![Dependency Status](https://gemnasium.com/maccman/catapult.png)](https://gemnasium.com/maccman/catapult)
 
 Simple gem that gives pure JavaScript/CoffeeScript projects a basic structure, and manages any necessary compilation and concatenation.
 
@@ -15,6 +15,9 @@ To generate an app, use:
     $ catapult new myapp
 
       create  myapp
+      create  myapp/Gemfile
+      create  myapp/Guardfile
+      create  myapp/Rakefile
       create  myapp/assets/javascripts/app.js
       create  myapp/assets/stylesheets/app.css
       create  myapp/browser.json
@@ -29,6 +32,10 @@ Now you can start a catapult server:
     $ catapult server
 
 And open up the app [in your browser](http://localhost:9292).
+
+Enable [livereload](http://livereload.com/) via [Guard](https://github.com/guard/guard):
+
+	$ guard
 
 You can also build the files for deployment:
 
@@ -53,6 +60,13 @@ See the Sprockets documentation for more information.
 Sprockets will automatically compile certain file types when the files are first requested. For example, files with `.coffee` extensions will be compiled down to JavaScript before being served up to the end user.
 
 The included Sprockets compilers are: [CoffeeScript](http://coffeescript.org), [sprockets-commonjs](http://github.com/maccman/sprockets-commonjs) and [Stylus](http://learnboost.github.com/stylus/). You can include additional ones by simply adding them to your project's `Gemfile`.
+
+## Livereload the browser
+
+With the [Guardfile](example/Guardfile) template the only thing you'll have to do is to run `guard` from your commandline. If you then change some stylesheets for example, your browser will know about these changes and reload itself.
+
+This is possible because the [rack-livereload](https://github.com/johnbintz/rack-livereload) middleware will include a reference to the [livereload-js](livereload/livereload-js) library when it serves your html files.
+
 
 ## Deploying to Heroku
 
