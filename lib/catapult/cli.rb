@@ -81,5 +81,12 @@ module Catapult
     def new(name)
       directory('templates/app', name)
     end
+
+    desc 'fetch', 'Fetch a lib'
+
+    def fetch(lib)
+      Fetcher.new(lib).download
+    end
   end
+
 end

@@ -24,4 +24,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'coffee-script', '~> 2.2.0'
   gem.add_dependency 'thor', '~> 0.18.1'
   gem.add_dependency 'thin', '~> 1.5.1'
+  gem.add_dependency 'faraday', '~> 0.9.0.rc2'
 end

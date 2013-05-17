@@ -3,6 +3,7 @@ require 'sprockets'
 require 'sprockets/commonjs'
 require 'stylus/sprockets'
 require 'coffee_script'
+require 'catapult/fetcher'
 
 module Catapult
   autoload :CLI, 'catapult/cli'
