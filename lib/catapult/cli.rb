@@ -82,7 +82,7 @@ module Catapult
       directory('templates/app', name)
     end
 
-    desc 'fetch', 'Fetch a lib'
+    desc 'fetch', 'Fetch a JavaScript lib (jquery, underscore, ...)'
 
     def fetch(lib)
       Fetcher.new(lib).download

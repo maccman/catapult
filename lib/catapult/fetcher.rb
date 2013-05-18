@@ -5,8 +5,8 @@ module Catapult
   class Fetcher
     LIBS = {
       'jquery'       => 'http://code.jquery.com/jquery-1.9.1.js',
-      'underscore'   => 'http://backbonejs.org/backbone.js',
-      'backbone'     => 'http://underscorejs.org/underscore.js',
+      'backbone'   => 'http://backbonejs.org/backbone.js',
+      'underscore'     => 'http://underscorejs.org/underscore.js',
       'handlebars'   => 'https://raw.github.com/wycats/handlebars.js/1.0.0-rc.3/dist/handlebars.js',
       'marionette'   => 'http://marionettejs.com/downloads/backbone.marionette.js'
     }
