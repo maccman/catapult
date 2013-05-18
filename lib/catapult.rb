@@ -8,6 +8,7 @@ module Catapult
   autoload :CLI, 'catapult/cli'
   autoload :Compressor, 'catapult/compressor'
   autoload :TryStatic, 'catapult/try_static'
+  autoload :DataServer, 'catapult/data_server'
 
   def self.root
     @root ||= Pathname('.').expand_path
@@ -43,10 +44,12 @@ module Catapult
           :try  => ['.html', 'index.html', '/index.html']
 
       use Rack::ContentType
+      use Catapult::DataServer
 
       run lambda {|env|
         [404, {}, ['Not found']]
       }
     end
   end
+
 end
