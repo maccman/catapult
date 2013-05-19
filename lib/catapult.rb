@@ -3,6 +3,7 @@ require 'sprockets'
 require 'sprockets/commonjs'
 require 'stylus/sprockets'
 require 'coffee_script'
+require 'clogger'
 
 module Catapult
   autoload :CLI, 'catapult/cli'
@@ -43,6 +44,7 @@ module Catapult
           :try  => ['.html', 'index.html', '/index.html']
 
       use Rack::ContentType
+      use Clogger, :format => '"$request" ?$query_string $status $request_time $http_host', :logger => $stderr, :reentrant => false
 
       run lambda {|env|
         [404, {}, ['Not found']]
